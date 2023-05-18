@@ -9,29 +9,35 @@ require([
     "esri/widgets/BasemapToggle",
     "esri/widgets/BasemapGallery",
     "esri/widgets/Search",
-], function(esriConfig, WebMap, MapView, Legend, Home,LayerList,BasemapGallery,BasemapToggle,Search) {
+], function(esriConfig, WebMap, MapView, Legend, Home, ScaleBar,LayerList,BasemapGallery,BasemapToggle,Search) {
 const webMap = new WebMap({
     portalItem: {
         id:"2945c54a98d24380a1670caab38935f1"
     }
 })
+
 const view = new MapView({
     container:"viewDiv",
     map: webMap
-}) ;
+});
+
 const homeBtn = new Home({
     view:view
-})
-view.ui.add(homeBtn,"top-left")
+});
+
+view.ui.add(homeBtn,"top-left");
+
 const legend = new Legend ({
     view: view
 })
+
 view.ui.add(legend, "bottom-left")
-const scaleBar = new ScaleBar({
+const scaleBar = new ScaleBar ({
     view: view,
     unit:"metric",
     style: "ruler"
 })
+
 view.ui.add(scaleBar, "bottom-right");
 
 view.ui.add("basemap-btn", "top-right");
@@ -57,7 +63,7 @@ const layerList=new LayerList({
 })
 
 
-view.ui.add(LayerList,"top-right" );
+view.ui.add(layerList, "top-right");
 
 document
 .getElementById("layerList-btn")
